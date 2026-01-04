@@ -9,9 +9,26 @@ public class PairMatchingController {
     private final InputView inputView = new InputView();
 
     public void run() {
-        while (!selectMode().equals("Q")) {
+        while (true) {
+            String mode = selectMode();
 
+            if (mode.equals("Q")) break;
+            if (mode.equals("1")) pairMatch();
+            if (mode.equals("2")) pairCheck();
+            if (mode.equals("3")) pairReset();
         }
+
+    }
+
+    public void pairMatch() {
+        outputView.printCourseInfo();
+    }
+
+    public void pairCheck() {
+
+    }
+
+    public void pairReset() {
 
     }
 
