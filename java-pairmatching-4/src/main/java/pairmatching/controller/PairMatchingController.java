@@ -18,8 +18,7 @@ public class PairMatchingController {
     public String selectMode() {
         return retryUntilSuccess(() -> {
             outputView.printFunctionSelection();
-//            return inputView.readPurchaseAmount();
-            return "a";
+            return inputView.readMode();
         });
     }
 
