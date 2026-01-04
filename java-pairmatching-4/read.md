@@ -94,7 +94,7 @@ Domain (Lotto, Lottos, WinningLotto, LottoStatistics)
 
 - [x]  기능 선택시에 1, 2, 3, Q가 아닌 다른 값을 입력할 경우 IllegalArgumentException으로 에러 메시지를 출력하고 다시 입력 받는다.
 - [ ]  매칭 경우의 수가 없을 경우에 에러 메시지를 출력한다.
-- [ ]  다시 매칭할 것인지에 대한 답변이 네 / 아니오 가 아닐 경우 IllegalArgumentException으로 에러 메시지를 출력하고 다시 입력 받는다.
+- [x]  다시 매칭할 것인지에 대한 답변이 네 / 아니오 가 아닐 경우 IllegalArgumentException으로 에러 메시지를 출력하고 다시 입력 받는다.
 - [x]  과정, 레벨, 미션을 잘못 입력할 경우 IllegalArgumentException으로 에러 메시지를 출력하고 다시 입력 받는다.
 
 ### 4. 기타

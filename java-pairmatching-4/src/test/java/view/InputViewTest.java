@@ -20,6 +20,22 @@ public class InputViewTest {
                 () -> inputView.validateMode(input)
         );
 
+        // Then
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] 잘못된 입력입니다.");
+    }
+
+    @Test
+    void 다시매칭_validation_예외테스트() {
+        // Given
+        String input = "아아아니요오오오오";
+
+        // When
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> inputView.validateRematchForm(input)
+        );
+
+        //Then
         assertThat(exception.getMessage()).isEqualTo("[ERROR] 잘못된 입력입니다.");
     }
 }
