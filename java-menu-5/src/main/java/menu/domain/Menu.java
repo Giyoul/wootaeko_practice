@@ -1,5 +1,7 @@
 package menu.domain;
 
+import java.util.List;
+
 public enum Menu {
     // Japanese
     GYUDON("규동", Cuisine.JAPANESE),
@@ -62,5 +64,13 @@ public enum Menu {
     Menu(String menuName, Cuisine cuisine) {
         this.menuName = menuName;
         this.cuisine = cuisine;
+    }
+
+    public static Menu from(String input) {
+        return List.of(Menu.values()).stream()
+                .filter(menu -> menu.menuName.equals(input))
+                .findFirst()
+                .orElseThrow(() ->
+                        new IllegalArgumentException("[ERROR] 존재하지 않는 메뉴입니다."));
     }
 }
