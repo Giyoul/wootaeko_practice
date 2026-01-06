@@ -11,5 +11,10 @@ public class MenuController {
 
     private void getCoachInfo() {
         outputView.printInitMessage();
+        getCoachName();
+    }
+
+    private void getCoachName() {
+        outputView.printCoachNameGuideMessage();
     }
 }
