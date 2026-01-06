@@ -19,18 +19,24 @@ public class MenuController {
         outputView.printInitMessage();
         List<String> coachName = getCoachName();
         List<List<Menu>> cannotEatMenu = getCantEat(coachName);
+        System.out.println(cannotEatMenu);
     }
 
     private List<List<Menu>> getCantEat(List<String> coachName) {
         List<List<Menu>> cannotEat = new ArrayList<>();
 
         for (String name : coachName) {
-             List<Menu> menus = retryUntilSuccess(() -> {
-                outputView.printCannotEatMenuGuideMessage(name);
-                return null;
-            });
+            List<Menu> menus = getCannotEatMenus(name);
+            cannotEat.add(menus);
         }
-        return null;
+        return cannotEat;
+    }
+
+    public List<Menu> getCannotEatMenus(String name) {
+        return retryUntilSuccess(() -> {
+            outputView.printCannotEatMenuGuideMessage(name);
+            return inputView.getCannotEat();
+        });
     }
 
     private List<String> getCoachName() {
