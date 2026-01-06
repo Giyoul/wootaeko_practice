@@ -35,4 +35,32 @@ public class InputViewTest {
         // Then
         assertThat(exception.getMessage()).isEqualTo("[ERROR] 코치는 최소 2명 이상 입력해야 합니다.");
     }
+
+    @Test
+    void 입력받은_코치의_이름이_2글자_이하일경우_에러를_발생시킨다() {
+        // Given
+        List<String> input = List.of("토미", "제임스", "포");
+
+        // When
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputView.checkNameSize(input);
+        });
+
+        // Then
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] 코치의 이름은 2글자 이상 4글자 이하여야 합니다.");
+    }
+
+    @Test
+    void 입력받은_코치의_이름이_4글자_이상일경우_에러를_발생시킨다() {
+        // Given
+        List<String> input = List.of("토미", "제임스", "포코코코코코코");
+
+        // When
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputView.checkNameSize(input);
+        });
+
+        // Then
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] 코치의 이름은 2글자 이상 4글자 이하여야 합니다.");
+    }
 }
