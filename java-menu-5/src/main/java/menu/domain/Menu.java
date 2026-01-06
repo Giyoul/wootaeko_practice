@@ -1,6 +1,7 @@
 package menu.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public enum Menu {
     // Japanese
@@ -76,5 +77,11 @@ public enum Menu {
                 .findFirst()
                 .orElseThrow(() ->
                         new IllegalArgumentException("[ERROR] 존재하지 않는 메뉴입니다."));
+    }
+
+    public static List<Menu> getCuisinMenu(Cuisine requestQuisine) {
+        return List.of(Menu.values()).stream()
+                .filter(menu -> menu.cuisine.equals(requestQuisine))
+                .collect(Collectors.toList());
     }
 }
