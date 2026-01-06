@@ -40,6 +40,9 @@ public class InputView {
         if (coachNames.size() == 1) {
             throw new IllegalArgumentException("[ERROR] 코치는 최소 2명 이상 입력해야 합니다.");
         }
+        if (coachNames.size() > 5) {
+            throw new IllegalArgumentException("[ERROR] 코치는 5명 이하로 입력해야 합니다.");
+        }
     }
 
     public void checkNameSize(List<String> coachNames) {
