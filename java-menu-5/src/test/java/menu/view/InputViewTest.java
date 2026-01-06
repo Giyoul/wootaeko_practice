@@ -63,4 +63,18 @@ public class InputViewTest {
         // Then
         assertThat(exception.getMessage()).isEqualTo("[ERROR] 코치의 이름은 2글자 이상 4글자 이하여야 합니다.");
     }
+
+    @Test
+    void 입력받은_메뉴의_가지수가_2가지_초과일경우_에러를_발생시킨다() {
+        // Given
+        List<String> input = List.of("떡볶이", "피자", "파스타");
+
+        // When
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputView.checkNumberOfMenus(input);
+        });
+
+        // Then
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] 먹지 못하는 메뉴는 2가지 이하여야 합니다.");
+    }
 }
