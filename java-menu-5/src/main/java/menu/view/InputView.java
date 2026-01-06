@@ -11,12 +11,14 @@ public class InputView {
     }
 
     public List<String> parseCoachNames(String names) {
-        try {
-            List<String> parsedCoachNames = List.of(names.split(","));
+        List<String> parsedCoachNames = List.of(names.split(","));
+        numberOfCoachNames(parsedCoachNames);
+        return parsedCoachNames;
+    }
 
-            return parsedCoachNames;
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] 구분자는 ,여야 합니다.");
+    public void numberOfCoachNames(List<String> coachNames) {
+        if (coachNames.size() == 1) {
+            throw new IllegalArgumentException("[ERROR] 코치는 최소 2명 이상 입력해야 합니다.");
         }
     }
 }

@@ -1,6 +1,7 @@
 package menu.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -19,5 +20,19 @@ public class InputViewTest {
 
         // Then
         assertThat(response).isEqualTo(expect);
+    }
+
+    @Test
+    void 입력받은_코치가_1명_이하일경우_에러를_발생시킨다() {
+        // Given
+        List<String> input = List.of("토미");
+
+        // When
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputView.numberOfCoachNames(input);
+        });
+
+        // Then
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] 코치는 최소 2명 이상 입력해야 합니다.");
     }
 }
