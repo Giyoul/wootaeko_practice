@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class InputView {
+
     public List<String> getCoachName() {
         String names = Console.readLine();
         List<String> parsedNames = parseCoachNames(names);
