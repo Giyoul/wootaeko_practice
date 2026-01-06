@@ -37,6 +37,20 @@ public class InputViewTest {
     }
 
     @Test
+    void 입력받은_코치가_6명_이상일경우_에러를_발생시킨다() {
+        // Given
+        List<String> input = List.of("토미", "기영", "민선", "나임", "성현", "예정");
+
+        // When
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputView.numberOfCoachNames(input);
+        });
+
+        // Then
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] 코치는 5명 이하로 입력해야 합니다.");
+    }
+
+    @Test
     void 입력받은_코치의_이름이_2글자_이하일경우_에러를_발생시킨다() {
         // Given
         List<String> input = List.of("토미", "제임스", "포");
