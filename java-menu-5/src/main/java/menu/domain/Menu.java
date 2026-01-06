@@ -67,6 +67,10 @@ public enum Menu {
     }
 
     public static Menu from(String input) {
+        if (input.isEmpty()) {
+            return null;
+        }
+
         return List.of(Menu.values()).stream()
                 .filter(menu -> menu.menuName.equals(input))
                 .findFirst()
