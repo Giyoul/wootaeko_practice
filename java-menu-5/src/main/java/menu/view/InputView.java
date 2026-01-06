@@ -3,17 +3,24 @@ package menu.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import menu.domain.Menu;
 
 public class InputView {
 
     public List<Menu> getCannotEat() {
         String menus = Console.readLine();
-        List<Menu> response = Stream.of(menus.split(","))
+        List<String> parsedMenuNames = List.of(menus.split(","));
+        checkNumberOfMenus(parsedMenuNames);
+        List<Menu> response = parsedMenuNames.stream()
                 .map(Menu::from)
                 .collect(Collectors.toList());
         return response;
+    }
+
+    public void checkNumberOfMenus(List<String> parsedMenuNames) {
+        if (parsedMenuNames.size() > 2) {
+            throw new IllegalArgumentException("[ERROR] 먹지 못하는 메뉴는 2가지 이하여야 합니다.");
+        }
     }
 
     public List<String> getCoachName() {
