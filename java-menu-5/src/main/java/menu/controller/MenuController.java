@@ -1,5 +1,6 @@
 package menu.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -17,6 +18,7 @@ public class MenuController {
     public void run() {
         List<Coach> coachInfo = getCoachInfo();
         menuService.saveCoachInfo(coachInfo);
+        String recommend = menuService.recommendMenu();
     }
 
     private List<Coach> getCoachInfo() {

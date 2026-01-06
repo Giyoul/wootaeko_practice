@@ -9,4 +9,10 @@ public class MenuService {
     public void saveCoachInfo(List<Coach> coachInfo) {
         coaches = coachInfo;
     }
+
+
+    public String recommendMenu() {
+
+        return "test";
+    }
 }
