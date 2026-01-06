@@ -2,13 +2,24 @@ package menu.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import menu.domain.Menu;
 
 public class InputView {
+
+    public List<Menu> getCannotEat() {
+        String menus = Console.readLine();
+        List<Menu> response = Stream.of(menus.split(","))
+                .map(Menu::from)
+                .collect(Collectors.toList());
+        return response;
+    }
 
     public List<String> getCoachName() {
         String names = Console.readLine();
         List<String> parsedNames = parseCoachNames(names);
-        return null;
+        return parsedNames;
     }
 
     public List<String> parseCoachNames(String names) {
