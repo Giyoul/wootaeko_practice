@@ -3,23 +3,35 @@ package menu.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
+import menu.domain.Coach;
 import menu.domain.Menu;
+import menu.service.MenuService;
 import menu.view.InputView;
 import menu.view.OutputView;
 
 public class MenuController {
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
+    private final MenuService menuService = new MenuService();
 
     public void run() {
-        getCoachInfo();
+        List<Coach> coachInfo = getCoachInfo();
+        menuService.saveCoachInfo(coachInfo);
     }
 
-    private void getCoachInfo() {
+    private List<Coach> getCoachInfo() {
         outputView.printInitMessage();
         List<String> coachName = getCoachName();
         List<List<Menu>> cannotEatMenu = getCantEat(coachName);
-        System.out.println(cannotEatMenu);
+        return makeCoachInfo(coachName, cannotEatMenu);
+    }
+
+    private List<Coach> makeCoachInfo(List<String> coachName, List<List<Menu>> cannotEatMenu) {
+        List<Coach> coaches = new ArrayList<>();
+        for (int i = 0; i < coachName.size(); i++) {
+            coaches.add(new Coach(coachName.get(i), cannotEatMenu.get(i)));
+        }
+        return coaches;
     }
 
     private List<List<Menu>> getCantEat(List<String> coachName) {
