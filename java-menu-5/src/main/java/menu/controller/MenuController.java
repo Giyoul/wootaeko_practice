@@ -1,9 +1,13 @@
 package menu.controller;
 
+import java.util.List;
+import java.util.function.Supplier;
+import menu.view.InputView;
 import menu.view.OutputView;
 
 public class MenuController {
     private final OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
 
     public void run() {
         getCoachInfo();
@@ -11,10 +15,23 @@ public class MenuController {
 
     private void getCoachInfo() {
         outputView.printInitMessage();
-        getCoachName();
+        List<String> coachName = getCoachName();
     }
 
-    private void getCoachName() {
-        outputView.printCoachNameGuideMessage();
+    private List<String> getCoachName() {
+        return retryUntilSuccess(() -> {
+            outputView.printCoachNameGuideMessage();
+            return inputView.getCoachName();
+        });
+    }
+
+    private <T> T retryUntilSuccess(Supplier<T> action) {
+        while (true) {
+            try {
+                return action.get();
+            } catch (IllegalArgumentException e) {
+                outputView.printExceptionMessage(e.getMessage());
+            }
+        }
     }
 }

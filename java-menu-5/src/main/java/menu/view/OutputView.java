@@ -11,4 +11,8 @@ public class OutputView {
     public void printCoachNameGuideMessage() {
         System.out.println(PUT_COACH_NAME_GUIDE_MESSAGE);
     }
+
+    public void printExceptionMessage(String message) {
+        System.out.println(message);
+    }
 }
