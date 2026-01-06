@@ -91,7 +91,7 @@ Domain
 
 ### 3. 예외 처리 기능
 
-- [x]  입력받은 코치 이름이 1명 이하일 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
+- [ ]  입력받은 코치 이름이 1명 이하 & 6명 이상일 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [x]  입력받은 코치 이름이 2~4글자가 아닐 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [x]  입력받은 못 먹는 메뉴가 없는 메뉴일 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [x]  입력받은 못 먹는 메뉴가 0~2개가 아닐 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
